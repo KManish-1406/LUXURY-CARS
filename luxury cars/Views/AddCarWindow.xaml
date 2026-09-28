@@ -1,0 +1,286 @@
+<Window x:Class="luxury_cars.Views.AddCarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="clr-namespace:luxury_cars.Converters"
+        Title="Add New Car" Height="640" Width="460"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="pink">
+
+    <Window.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid VerticalAlignment="Top" Margin="0,20,0,20">
+            <Border Background="White" CornerRadius="16"
+                    Padding="36,30" Width="400"
+                    HorizontalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect Color="#AAAAAA" BlurRadius="20"
+                                      ShadowDepth="2" Opacity="0.15"/>
+                </Border.Effect>
+
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource AddCar_Title}"
+                               FontSize="20" FontWeight="Bold"
+                               Foreground="deeppink"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,20"/>
+
+                    <!-- Model Number -->
+                    <TextBlock Text="{DynamicResource AddCar_ModelNumber}"
+                               FontSize="12" FontWeight="SemiBold"
+                               Foreground="#64748B" Margin="0,0,0,4"/>
+                    <TextBox Text="{Binding ModelNumber, UpdateSourceTrigger=PropertyChanged}"
+                             Height="36" Padding="10,0" FontSize="13"
+                             BorderBrush="#E2E8F0" BorderThickness="1"
+                             VerticalContentAlignment="Center" Margin="0,0,0,12"/>
+
+                    <!-- Brand + Name -->
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{DynamicResource AddCar_Brand}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding Brand, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="{DynamicResource AddCar_Name}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Year + Color -->
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{DynamicResource AddCar_Year}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding YearText, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="{DynamicResource AddCar_Color}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding Color, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Price + Stock -->
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{DynamicResource AddCar_Price}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding PriceText, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="{DynamicResource AddCar_Stock}"
+                                       FontSize="12" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+                            <TextBox Text="{Binding StockText, UpdateSourceTrigger=PropertyChanged}"
+                                     Height="36" Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- ── IMAGE UPLOAD SECTION ── -->
+                    <TextBlock Text="{DynamicResource AddCar_Image}"
+                               FontSize="12" FontWeight="SemiBold"
+                               Foreground="#64748B" Margin="0,0,0,8"/>
+
+                    <!-- Image preview box — shown only when image selected -->
+                    <Border CornerRadius="8" Margin="0,0,0,8"
+                            Visibility="{Binding HasSelectedImage, Converter={StaticResource BoolToVis}}">
+                        <Image Source="{Binding SelectedImageFullPath}"
+                               Height="160" Stretch="UniformToFill">
+                            <Image.Clip>
+                                <RectangleGeometry RadiusX="8" RadiusY="8"
+                                    Rect="0,0,328,160"/>
+                            </Image.Clip>
+                        </Image>
+                    </Border>
+
+                    <!-- Placeholder shown when no image selected -->
+                    <Border CornerRadius="8" Background="#F8FAFC"
+                            BorderBrush="#E2E8F0" BorderThickness="1"
+                            Height="100" Margin="0,0,0,8"
+                            Visibility="{Binding HasSelectedImage,
+                                Converter={StaticResource BoolToVis},
+                                ConverterParameter=Inverse}">
+                        <StackPanel VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="🖼" FontSize="28"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="No image selected"
+                                       FontSize="12" Foreground="#94A3B8"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Image action buttons -->
+                    <Grid Margin="0,0,0,12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Select image button -->
+                        <Button Grid.Column="0"
+                                Content="📁  Choose Image"
+                                Height="36" FontSize="12"
+                                Foreground="DeepPink"
+                                BorderBrush="#FBCFE8" BorderThickness="1"
+                                Background="#FFF0F5" Cursor="Hand"
+                                Command="{Binding SelectImageCommand}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="bd"
+                                            Background="#FFF0F5"
+                                            BorderBrush="#FBCFE8"
+                                            BorderThickness="1"
+                                            CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="bd" Property="Background" Value="#FCE7F3"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <!-- Remove image button — only shown when image selected -->
+                        <Button Grid.Column="2"
+                                Content="✕"
+                                Height="36" Width="36"
+                                FontSize="13" FontWeight="Bold"
+                                Foreground="#EF4444"
+                                BorderBrush="#FCA5A5" BorderThickness="1"
+                                Background="#FFF5F5" Cursor="Hand"
+                                Command="{Binding RemoveImageCommand}"
+                                Visibility="{Binding HasSelectedImage,
+                                    Converter={StaticResource BoolToVis}}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="bd"
+                                            Background="#FFF5F5"
+                                            BorderBrush="#FCA5A5"
+                                            BorderThickness="1"
+                                            CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="bd" Property="Background" Value="#FEE2E2"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+
+                    <!-- Error message -->
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               Visibility="{Binding HasError, Converter={StaticResource BoolToVis}}"
+                               Foreground="#EF4444" FontSize="12"
+                               TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                    <!-- Add / Cancel buttons -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Content="{DynamicResource AddCar_BtnCancel}"
+                                Height="40" FontSize="13"
+                                Foreground="#6366F1" BorderBrush="#6366F1"
+                                BorderThickness="1" Background="Transparent"
+                                Cursor="Hand" Command="{Binding CancelCommand}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="bd" Background="Transparent"
+                                            BorderBrush="#6366F1" BorderThickness="1"
+                                            CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="bd" Property="Background" Value="#EEF2FF"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Content="{DynamicResource AddCar_BtnAdd}"
+                                Height="40" FontSize="13" FontWeight="SemiBold"
+                                Foreground="White" BorderThickness="0"
+                                Cursor="Hand" Command="{Binding AddCommand}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="bd" Background="deeppink" CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="bd" Property="Opacity" Value="0.65"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>

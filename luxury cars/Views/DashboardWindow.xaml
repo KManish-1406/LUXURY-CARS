@@ -1,0 +1,428 @@
+<Window x:Class="luxury_cars.Views.DashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Car Inventory — Dashboard"
+        Height="680" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource Theme_BackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ── Top bar ── -->
+        <Border Grid.Row="0" Background="{DynamicResource Theme_TopBarBrush}">
+            <Grid Margin="24,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="🚗" FontSize="22"
+                               FontFamily="Segoe UI Emoji"
+                               Margin="0,0,10,0"
+                               VerticalAlignment="Center"/>
+                    <TextBlock Text="Car Inventory System"
+                               FontSize="18" FontWeight="Bold"
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                            VerticalAlignment="Center">
+
+                    <TextBlock x:Name="WelcomeLabel"
+                               FontSize="13" Foreground="White"
+                               VerticalAlignment="Center"
+                               Margin="0,0,16,0"/>
+
+                    <!-- Reports button -->
+                    <Button x:Name="ReportsBtn" Content="📊 Reports"
+                            Height="32" Padding="14,0" Margin="0,0,10,0"
+                            FontSize="12" FontWeight="SemiBold"
+                            Foreground="White" BorderThickness="0"
+                            Cursor="Hand" Click="ReportsBtn_Click"
+                            Visibility="Collapsed">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="bd"
+                                        Background="{DynamicResource Theme_AccentBrush}"
+                                        CornerRadius="6">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Manage Users button -->
+                    <Button x:Name="ManageUsersBtn" Content="👥 Users"
+                            Height="32" Padding="14,0" Margin="0,0,10,0"
+                            FontSize="12" FontWeight="SemiBold"
+                            Foreground="White" BorderThickness="0"
+                            Cursor="Hand" Click="ManageUsersBtn_Click"
+                            Visibility="Collapsed">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="bd" Background="#6366F1" CornerRadius="6">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Theme Switcher -->
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Margin="0,0,12,0">
+                        <TextBlock Text="🎨" FontSize="15"
+                                   FontFamily="Segoe UI Emoji"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,6,0"
+                                   Foreground="White"/>
+                        <ComboBox x:Name="ThemeComboBox"
+                                  Width="148" Height="32"
+                                  FontSize="12"
+                                  VerticalContentAlignment="Center"
+                                  BorderThickness="1" Cursor="Hand"
+                                  SelectionChanged="ThemeComboBox_SelectionChanged"/>
+                    </StackPanel>
+
+                    <!-- Logout -->
+                    <Button x:Name="LogoutBtn" Content="Logout"
+                            Width="80" Height="32"
+                            FontSize="12" Foreground="#6366F1"
+                            BorderThickness="0" Cursor="Hand"
+                            Click="LogoutBtn_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="bd" Background="White" CornerRadius="6">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ── Stats + Search bar ── -->
+        <Grid Grid.Row="1" Margin="24,16,24,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Total cars -->
+            <Border Grid.Column="0"
+                    Background="{DynamicResource Theme_StatCardBrush}"
+                    CornerRadius="12" Padding="16,14" Margin="0,0,10,0"
+                    BorderBrush="{DynamicResource Theme_BorderBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Total Cars" FontSize="12"
+                               Foreground="{DynamicResource Theme_MutedTextBrush}"/>
+                    <TextBlock x:Name="TotalCount" Text="0"
+                               FontSize="28" FontWeight="Bold"
+                               Foreground="{DynamicResource Theme_PrimaryBrush}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Available -->
+            <Border Grid.Column="1"
+                    Background="{DynamicResource Theme_StatCardBrush}"
+                    CornerRadius="12" Padding="16,14" Margin="0,0,10,0"
+                    BorderBrush="{DynamicResource Theme_BorderBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Available" FontSize="12"
+                               Foreground="{DynamicResource Theme_MutedTextBrush}"/>
+                    <TextBlock x:Name="AvailableCount" Text="0"
+                               FontSize="28" FontWeight="Bold"
+                               Foreground="#22C55E"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Out of stock -->
+            <Border Grid.Column="2"
+                    Background="{DynamicResource Theme_StatCardBrush}"
+                    CornerRadius="12" Padding="16,14" Margin="0,0,10,0"
+                    BorderBrush="{DynamicResource Theme_BorderBrush}"
+                    BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Out of Stock" FontSize="12"
+                               Foreground="{DynamicResource Theme_MutedTextBrush}"/>
+                    <TextBlock x:Name="OutOfStockCount" Text="0"
+                               FontSize="28" FontWeight="Bold"
+                               Foreground="#EF4444"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Search + Add button -->
+            <StackPanel Grid.Column="3" Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Border BorderBrush="{DynamicResource Theme_SearchBorderBrush}"
+                        BorderThickness="1" CornerRadius="8"
+                        Background="{DynamicResource Theme_SurfaceBrush}"
+                        Margin="0,0,10,0">
+                    <TextBox x:Name="SearchBox"
+                             Width="220" Height="38"
+                             Padding="12,0" FontSize="13"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             Foreground="{DynamicResource Theme_TextBrush}"
+                             VerticalContentAlignment="Center"
+                             TextChanged="SearchBox_TextChanged"/>
+                </Border>
+
+                <Button x:Name="AddCarBtn" Content="+ Add Car"
+                        Height="38" Padding="16,0"
+                        FontSize="13" FontWeight="SemiBold"
+                        Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="AddCarBtn_Click"
+                        Width="135" Visibility="Collapsed">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="bd"
+                                    Background="{DynamicResource Theme_ButtonBrush}"
+                                    CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="bd" Property="Opacity" Value="0.65"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- ── DataGrid ── -->
+        <Border Grid.Row="2"
+                Background="{DynamicResource Theme_SurfaceBrush}"
+                CornerRadius="12" Margin="24,16,24,24"
+                BorderBrush="{DynamicResource Theme_BorderBrush}"
+                BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                  ShadowDepth="1" Opacity="0.1"/>
+            </Border.Effect>
+
+            <DataGrid x:Name="CarsGrid"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      GridLinesVisibility="Horizontal"
+                      BorderThickness="0"
+                      Background="{DynamicResource Theme_SurfaceBrush}"
+                      RowBackground="{DynamicResource Theme_GridRowBrush}"
+                      AlternatingRowBackground="{DynamicResource Theme_GridAltRowBrush}"
+                      ColumnHeaderHeight="44"
+                      RowHeight="60"
+                      FontSize="13"
+                      Foreground="{DynamicResource Theme_TextBrush}"
+                      SelectionMode="Single">
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background"      Value="{DynamicResource Theme_GridHeaderBrush}"/>
+                        <Setter Property="Foreground"      Value="{DynamicResource Theme_MutedTextBrush}"/>
+                        <Setter Property="FontWeight"      Value="SemiBold"/>
+                        <Setter Property="FontSize"        Value="12"/>
+                        <Setter Property="Padding"         Value="12,0"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="BorderBrush"     Value="{DynamicResource Theme_BorderBrush}"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.Columns>
+
+                    <!-- ── Car Image ── -->
+                    <DataGridTemplateColumn Header="Image" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="6" ClipToBounds="True"
+                                        Width="60" Height="46" Margin="4,2">
+                                    <Image Source="{Binding FullImagePath}"
+                                           Stretch="UniformToFill">
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding HasImage}"
+                                                                 Value="False">
+                                                        <Setter Property="Opacity" Value="0.3"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Model No."
+                                        Binding="{Binding ModelNumber}" Width="120"/>
+                    <DataGridTextColumn Header="Brand"
+                                        Binding="{Binding Brand}" Width="100"/>
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding Name}" Width="120"/>
+                    <DataGridTextColumn Header="Year"
+                                        Binding="{Binding Year}" Width="70"/>
+                    <DataGridTextColumn Header="Color"
+                                        Binding="{Binding Color}" Width="110"/>
+                    <DataGridTextColumn Header="Price"
+                                        Binding="{Binding PriceDisplay}" Width="120"/>
+                    <DataGridTextColumn Header="Stock"
+                                        Binding="{Binding Stock}" Width="70"/>
+
+                    <!-- Status badge -->
+                    <DataGridTemplateColumn Header="Status" Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="4" Padding="8,3"
+                                        HorizontalAlignment="Left" Margin="8,0">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="#DCFCE7"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Status}"
+                                                             Value="Out of Stock">
+                                                    <Setter Property="Background" Value="#FEE2E2"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <TextBlock Text="{Binding Status}"
+                                               FontSize="11" FontWeight="SemiBold">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="#16A34A"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Status}"
+                                                                 Value="Out of Stock">
+                                                        <Setter Property="Foreground" Value="#DC2626"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Added On"
+                                        Binding="{Binding CreatedAt}" Width="100"/>
+
+                    <!-- Sell button -->
+                    <DataGridTemplateColumn Header="Sell" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Sell"
+                                        Height="28" Padding="8,0"
+                                        FontSize="11" Foreground="White"
+                                        BorderThickness="0" Cursor="Hand"
+                                        Click="SellCar_Click">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="bd"
+                                                    Background="#22C55E"
+                                                    CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="bd" Property="Opacity" Value="0.8"/>
+                                                </Trigger>
+                                                <DataTrigger Binding="{Binding Status}"
+                                                             Value="Out of Stock">
+                                                    <Setter TargetName="bd" Property="Background"
+                                                            Value="#CBD5E1"/>
+                                                </DataTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!-- Delete button -->
+                    <DataGridTemplateColumn Header="Delete" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                                        Tag="{Binding Id}"
+                                        Height="28" Padding="8,0"
+                                        FontSize="11" Foreground="White"
+                                        BorderThickness="0" Cursor="Hand"
+                                        Click="DeleteCar_Click">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="bd"
+                                                    Background="#EF4444"
+                                                    CornerRadius="4">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="bd" Property="Opacity" Value="0.8"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Window>

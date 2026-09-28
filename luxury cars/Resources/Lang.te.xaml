@@ -1,0 +1,104 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  LOGIN WINDOW — తెలుగు                         -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="App_Title">లగ్జరీ కార్లు</sys:String>
+    <sys:String x:Key="App_Subtitle">మీ జాబితాను నిర్వహించడానికి సైన్ ఇన్ చేయండి</sys:String>
+    <sys:String x:Key="Label_Username">వినియోగదారు పేరు</sys:String>
+    <sys:String x:Key="Label_Password">పాస్‌వర్డ్</sys:String>
+    <sys:String x:Key="Label_Language">భాష</sys:String>
+    <sys:String x:Key="Btn_SignIn">సైన్ ఇన్ చేయండి →</sys:String>
+    <sys:String x:Key="Hint_Credentials">సూచన: admin / admin123</sys:String>
+    <sys:String x:Key="Error_UsernameEmpty">వినియోగదారు పేరు ఖాళీగా ఉండకూడదు.</sys:String>
+    <sys:String x:Key="Error_PasswordEmpty">పాస్‌వర్డ్ ఖాళీగా ఉండకూడదు.</sys:String>
+    <sys:String x:Key="Error_WrongCredentials">తప్పు వినియోగదారు పేరు లేదా పాస్‌వర్డ్.</sys:String>
+    <sys:String x:Key="Error_NoDatabase">డేటాబేస్‌కు కనెక్ట్ చేయడం సాధ్యం కాలేదు.</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  DASHBOARD WINDOW — తెలుగు                     -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="Dashboard_Title">కార్ జాబితా వ్యవస్థ</sys:String>
+    <sys:String x:Key="Dashboard_TotalCars">మొత్తం కార్లు</sys:String>
+    <sys:String x:Key="Dashboard_Available">అందుబాటులో ఉన్నవి</sys:String>
+    <sys:String x:Key="Dashboard_OutOfStock">స్టాక్ లేదు</sys:String>
+    <sys:String x:Key="Dashboard_AddCar">+ కార్ జోడించు</sys:String>
+    <sys:String x:Key="Dashboard_Refresh">⟳ తాజాపరచు</sys:String>
+    <sys:String x:Key="Dashboard_Logout">లాగ్అవుట్</sys:String>
+    <sys:String x:Key="Dashboard_SearchHint">పేరు, బ్రాండ్, మోడల్ ద్వారా శోధించు...</sys:String>
+    <sys:String x:Key="Dashboard_ColModel">మోడల్ నం.</sys:String>
+    <sys:String x:Key="Dashboard_ColBrand">బ్రాండ్</sys:String>
+    <sys:String x:Key="Dashboard_ColName">పేరు</sys:String>
+    <sys:String x:Key="Dashboard_ColYear">సంవత్సరం</sys:String>
+    <sys:String x:Key="Dashboard_ColColor">రంగు</sys:String>
+    <sys:String x:Key="Dashboard_ColPrice">ధర</sys:String>
+    <sys:String x:Key="Dashboard_ColStock">స్టాక్</sys:String>
+    <sys:String x:Key="Dashboard_ColStatus">స్థితి</sys:String>
+    <sys:String x:Key="Dashboard_ColAdded">జోడించిన తేదీ</sys:String>
+    <sys:String x:Key="Dashboard_ColSell">అమ్మకం</sys:String>
+    <sys:String x:Key="Dashboard_ColDelete">తొలగించు</sys:String>
+    <sys:String x:Key="Dashboard_BtnSell">అమ్ము</sys:String>
+    <sys:String x:Key="Dashboard_BtnDelete">తొలగించు</sys:String>
+    <sys:String x:Key="Dashboard_ConfirmDelete">{0} తొలగించాలా?\nఇది చేయలేనిది.</sys:String>
+    <sys:String x:Key="Dashboard_CannotSell">స్టాక్ అయిపోయింది!</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  ADD CAR WINDOW — తెలుగు                       -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="AddCar_Title">కొత్త కార్ జోడించు</sys:String>
+    <sys:String x:Key="AddCar_ModelNumber">కార్ మోడల్ నంబర్ *</sys:String>
+    <sys:String x:Key="AddCar_Brand">కార్ బ్రాండ్ *</sys:String>
+    <sys:String x:Key="AddCar_Name">కార్ పేరు *</sys:String>
+    <sys:String x:Key="AddCar_Year">కార్ సంవత్సరం *</sys:String>
+    <sys:String x:Key="AddCar_Color">రంగు</sys:String>
+    <sys:String x:Key="AddCar_Price">ధర (₹) *</sys:String>
+    <sys:String x:Key="AddCar_Stock">కొత్త స్టాక్ *</sys:String>
+    <sys:String x:Key="AddCar_BtnAdd">కార్ జోడించు</sys:String>
+    <sys:String x:Key="AddCar_BtnCancel">రద్దు చేయి</sys:String>
+    <sys:String x:Key="AddCar_Error_Required">అన్ని అవసరమైన (*) ఫీల్డ్‌లను పూరించండి.</sys:String>
+    <sys:String x:Key="AddCar_Error_Year">చెల్లుబాటు అయ్యే సంవత్సరం నమోదు చేయండి (ఉదా. 2024).</sys:String>
+    <sys:String x:Key="AddCar_Error_Price">చెల్లుబాటు అయ్యే ధర నమోదు చేయండి.</sys:String>
+    <sys:String x:Key="AddCar_Error_Stock">చెల్లుబాటు అయ్యే స్టాక్ పరిమాణం నమోదు చేయండి.</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  SALE WINDOW — తెలుగు                          -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="Sale_Title">కార్ అమ్మకం ప్రక్రియ</sys:String>
+    <sys:String x:Key="Sale_CardCar">🚘  కార్ వివరాలు</sys:String>
+    <sys:String x:Key="Sale_CardCustomer">👤  కస్టమర్ వివరాలు</sys:String>
+    <sys:String x:Key="Sale_CardPayment">💳  చెల్లింపు వివరాలు</sys:String>
+    <sys:String x:Key="Sale_CardDelivery">📅  డెలివరీ వివరాలు</sys:String>
+    <sys:String x:Key="Sale_Model">మోడల్</sys:String>
+    <sys:String x:Key="Sale_BrandName">బ్రాండ్ &amp; పేరు</sys:String>
+    <sys:String x:Key="Sale_Price">ధర</sys:String>
+    <sys:String x:Key="Sale_FullName">పూర్తి పేరు *</sys:String>
+    <sys:String x:Key="Sale_Phone">ఫోన్ *</sys:String>
+    <sys:String x:Key="Sale_Email">ఇమెయిల్</sys:String>
+    <sys:String x:Key="Sale_IdProof">గుర్తింపు రుజువు (ఆధార్/పాన్)</sys:String>
+    <sys:String x:Key="Sale_Address">చిరునామా</sys:String>
+    <sys:String x:Key="Sale_SalePrice">అమ్మకపు ధర (₹) *</sys:String>
+    <sys:String x:Key="Sale_AmountPaid">చెల్లించిన మొత్తం (₹) *</sys:String>
+    <sys:String x:Key="Sale_DueAmount">బకాయి మొత్తం:</sys:String>
+    <sys:String x:Key="Sale_PaymentType">చెల్లింపు రకం *</sys:String>
+    <sys:String x:Key="Sale_Cash">నగదు</sys:String>
+    <sys:String x:Key="Sale_Online">ఆన్‌లైన్</sys:String>
+    <sys:String x:Key="Sale_EMI">వాయిదాలు</sys:String>
+    <sys:String x:Key="Sale_EmiMonths">వాయిదాల నెలలు *</sys:String>
+    <sys:String x:Key="Sale_DeliveryDate">డెలివరీ తేదీ *</sys:String>
+    <sys:String x:Key="Sale_Notes">గమనికలు</sys:String>
+    <sys:String x:Key="Sale_BtnCancel">రద్దు చేయి</sys:String>
+    <sys:String x:Key="Sale_BtnConfirm">✓ అమ్మకం నిర్ధారించు &amp; PDF రూపొందించు</sys:String>
+    <sys:String x:Key="Sale_Error_NamePhone">కస్టమర్ పేరు మరియు ఫోన్ అవసరం.</sys:String>
+    <sys:String x:Key="Sale_Error_Price">చెల్లుబాటు అయ్యే అమ్మకపు ధర నమోదు చేయండి.</sys:String>
+    <sys:String x:Key="Sale_Error_AmountPaid">చెల్లుబాటు అయ్యే చెల్లింపు మొత్తం నమోదు చేయండి.</sys:String>
+    <sys:String x:Key="Sale_Error_Overpaid">చెల్లించిన మొత్తం అమ్మకపు ధరను మించకూడదు.</sys:String>
+    <sys:String x:Key="Sale_Error_DeliveryDate">దయచేసి డెలివరీ తేదీ ఎంచుకోండి.</sys:String>
+    <sys:String x:Key="Sale_Error_EmiMonths">చెల్లుబాటు అయ్యే వాయిదాల నెలలు నమోదు చేయండి.</sys:String>
+    <sys:String x:Key="Sale_Success_Title">అమ్మకం పూర్తయింది</sys:String>
+    <sys:String x:Key="Sale_PdfError_Title">PDF దోషం</sys:String>
+	<sys:String x:Key="AddCar_Image">కార్ చిత్రం (ఐచ్ఛికం)</sys:String>
+
+</ResourceDictionary>

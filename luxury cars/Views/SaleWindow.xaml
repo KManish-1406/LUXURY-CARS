@@ -1,0 +1,335 @@
+<Window x:Class="luxury_cars.Views.SaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource Sale_Title}"
+        Height="720" Width="580"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="lightpink">
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<Grid Margin="24">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+
+			<!-- ── Car Details card ── -->
+			<Border Grid.Row="0" Background="White" CornerRadius="12"
+                    Padding="20,16" Margin="0,0,0,14">
+				<Border.Effect>
+					<DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+				</Border.Effect>
+				<StackPanel>
+					<TextBlock Text="{DynamicResource Sale_CardCar}"
+                               FontSize="14" FontWeight="Bold"
+                               Background="deeppink"
+                               Foreground="White" Margin="0,0,0,12"/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0">
+							<TextBlock Text="{DynamicResource Sale_Model}"
+                                       FontSize="11" Foreground="#94A3B8"/>
+							<TextBlock x:Name="CarModel" FontSize="13"
+                                       FontWeight="SemiBold" Foreground="#1E293B"/>
+						</StackPanel>
+						<StackPanel Grid.Column="1">
+							<TextBlock Text="{DynamicResource Sale_BrandName}"
+                                       FontSize="11" Foreground="#94A3B8"/>
+							<TextBlock x:Name="CarBrandName" FontSize="13"
+                                       FontWeight="SemiBold" Foreground="#1E293B"/>
+						</StackPanel>
+						<StackPanel Grid.Column="2">
+							<TextBlock Text="{DynamicResource Sale_Price}"
+                                       FontSize="11" Foreground="#94A3B8"/>
+							<TextBlock x:Name="CarPrice" FontSize="13"
+                                       FontWeight="SemiBold" Foreground="#6366F1"/>
+						</StackPanel>
+					</Grid>
+				</StackPanel>
+			</Border>
+
+			<!-- ── Customer Details card ── -->
+			<Border Grid.Row="1" Background="White" CornerRadius="12"
+                    Padding="20,16" Margin="0,0,0,14">
+				<Border.Effect>
+					<DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+				</Border.Effect>
+				<StackPanel>
+					<TextBlock Text="{DynamicResource Sale_CardCustomer}"
+                               FontSize="14" FontWeight="Bold"
+                               Background="deeppink"
+                               Foreground="White" Margin="0,0,0,12"/>
+
+					<Grid Margin="0,0,0,10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="10"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0">
+							<TextBlock Text="{DynamicResource Sale_FullName}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="CustomerName" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+						</StackPanel>
+						<StackPanel Grid.Column="2">
+							<TextBlock Text="{DynamicResource Sale_Phone}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="CustomerPhone" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+						</StackPanel>
+					</Grid>
+
+					<Grid Margin="0,0,0,10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="10"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0">
+							<TextBlock Text="{DynamicResource Sale_Email}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="CustomerEmail" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+						</StackPanel>
+						<StackPanel Grid.Column="2">
+							<TextBlock Text="{DynamicResource Sale_IdProof}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="CustomerIdProof" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+						</StackPanel>
+					</Grid>
+
+					<TextBlock Text="{DynamicResource Sale_Address}"
+                               FontSize="11" FontWeight="SemiBold"
+                               Foreground="#64748B" Margin="0,0,0,4"/>
+					<TextBox x:Name="CustomerAddress" Height="60"
+                             Padding="10,8" FontSize="13"
+                             BorderBrush="#E2E8F0" BorderThickness="1"
+                             TextWrapping="Wrap" AcceptsReturn="True"/>
+				</StackPanel>
+			</Border>
+
+			<!-- ── Payment Details card ── -->
+			<Border Grid.Row="2" Background="White" CornerRadius="12"
+                    Padding="20,16" Margin="0,0,0,14">
+				<Border.Effect>
+					<DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+				</Border.Effect>
+				<StackPanel>
+					<TextBlock Text="{DynamicResource Sale_CardPayment}"
+                               FontSize="14" FontWeight="Bold"
+                               Background="deeppink"
+                               Foreground="White" Margin="0,0,0,12"/>
+
+					<Grid Margin="0,0,0,10">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="10"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0">
+							<TextBlock Text="{DynamicResource Sale_SalePrice}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="SalePrice" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"
+                                     TextChanged="SalePrice_Changed"/>
+						</StackPanel>
+						<StackPanel Grid.Column="2">
+							<TextBlock Text="{DynamicResource Sale_AmountPaid}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="AmountPaid" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#E2E8F0" BorderThickness="1"
+                                     VerticalContentAlignment="Center"
+                                     TextChanged="AmountPaid_Changed"/>
+						</StackPanel>
+					</Grid>
+
+					<!-- Due amount display -->
+					<Border Background="pink" CornerRadius="8"
+                            Padding="12,8" Margin="0,0,0,10">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{DynamicResource Sale_DueAmount}"
+                                       FontSize="13" FontWeight="SemiBold"
+                                       Foreground="#64748B"/>
+							<TextBlock x:Name="DueDisplay" Text="₹0"
+                                       FontSize="13" FontWeight="Bold"
+                                       Foreground="#EF4444"/>
+						</StackPanel>
+					</Border>
+
+					<!-- Payment type -->
+					<TextBlock Text="{DynamicResource Sale_PaymentType}"
+                               FontSize="11" FontWeight="SemiBold"
+                               Foreground="#64748B" Margin="0,0,0,8"/>
+					<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+						<RadioButton x:Name="RadioCash"
+                                     Content="{DynamicResource Sale_Cash}"
+                                     IsChecked="True" FontSize="13"
+                                     Margin="0,0,20,0"
+                                     Checked="PaymentType_Changed"/>
+						<RadioButton x:Name="RadioOnline"
+                                     Content="{DynamicResource Sale_Online}"
+                                     FontSize="13" Margin="0,0,20,0"
+                                     Checked="PaymentType_Changed"/>
+						<RadioButton x:Name="RadioEMI"
+                                     Content="{DynamicResource Sale_EMI}"
+                                     FontSize="13"
+                                     Checked="PaymentType_Changed"/>
+					</StackPanel>
+
+					<!-- EMI panel -->
+					<Border x:Name="EmiPanel"
+                            Background="#EEF2FF" CornerRadius="8"
+                            Padding="12,10" Margin="0,0,0,10"
+                            Visibility="Collapsed">
+						<StackPanel>
+							<TextBlock Text="{DynamicResource Sale_EmiMonths}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="EmiMonths" Height="34"
+                                     Width="120" HorizontalAlignment="Left"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="#C7D2FE" BorderThickness="1"
+                                     VerticalContentAlignment="Center"
+                                     TextChanged="EmiMonths_Changed"/>
+							<TextBlock x:Name="EmiDisplay" FontSize="12"
+                                       Foreground="#6366F1" Margin="0,6,0,0"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+			</Border>
+
+			<!-- ── Delivery card ── -->
+			<Border Grid.Row="3" Background="White" CornerRadius="12"
+                    Padding="20,16" Margin="0,0,0,14">
+				<Border.Effect>
+					<DropShadowEffect Color="#AAAAAA" BlurRadius="10"
+                                      ShadowDepth="1" Opacity="0.1"/>
+				</Border.Effect>
+				<StackPanel>
+					<TextBlock Text="{DynamicResource Sale_CardDelivery}"
+                               FontSize="14" FontWeight="Bold"
+                               Background="deeppink"
+                               Foreground="White" Margin="0,0,0,12"/>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="10"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0">
+							<TextBlock Text="{DynamicResource Sale_DeliveryDate}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<DatePicker x:Name="DeliveryDate"
+                                        Height="34" FontSize="13"
+                                        BorderBrush="#E2E8F0"/>
+						</StackPanel>
+						<StackPanel Grid.Column="2">
+							<TextBlock Text="{DynamicResource Sale_Notes}"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="#64748B" Margin="0,0,0,4"/>
+							<TextBox x:Name="Notes" Height="34"
+                                     Padding="10,0" FontSize="13"
+                                     BorderBrush="deeppink" BorderThickness="1"
+                                     VerticalContentAlignment="Center"/>
+						</StackPanel>
+					</Grid>
+				</StackPanel>
+			</Border>
+
+			<!-- ── Error + Buttons ── -->
+			<StackPanel Grid.Row="4">
+				<TextBlock x:Name="ErrorText"
+                           Foreground="#EF4444" FontSize="12"
+                           TextWrapping="Wrap" Margin="0,0,0,10"
+                           Visibility="Collapsed"/>
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+
+					<Button Grid.Column="0"
+                            Content="{DynamicResource Sale_BtnCancel}"
+                            Height="44" FontSize="13"
+                            Foreground="deeppink" BorderBrush="#6366F1"
+                            BorderThickness="1" Background="Transparent"
+                            Cursor="Hand" Click="CancelBtn_Click">
+						<Button.Template>
+							<ControlTemplate TargetType="Button">
+								<Border x:Name="bd" Background="Transparent"
+                                        BorderBrush="#6366F1" BorderThickness="1"
+                                        CornerRadius="8">
+									<ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+								</Border>
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter TargetName="bd" Property="Background"
+                                                Value="#EEF2FF"/>
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Button.Template>
+					</Button>
+
+					<Button Grid.Column="2"
+                            Content="{DynamicResource Sale_BtnConfirm}"
+                            Height="44" FontSize="13" FontWeight="SemiBold"
+                            Foreground="White" BorderThickness="0"
+                            Cursor="Hand" Click="ConfirmSaleBtn_Click">
+						<Button.Template>
+							<ControlTemplate TargetType="Button">
+								<Border x:Name="bd" Background="deeppink"
+                                        CornerRadius="8">
+									<ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+								</Border>
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+									</Trigger>
+									<Trigger Property="IsPressed" Value="True">
+										<Setter TargetName="bd" Property="Opacity" Value="0.65"/>
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Button.Template>
+					</Button>
+				</Grid>
+			</StackPanel>
+		</Grid>
+	</ScrollViewer>
+</Window>

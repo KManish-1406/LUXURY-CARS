@@ -1,0 +1,189 @@
+<Window x:Class="luxury_cars.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Car Inventory — Login"
+        Height="680" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="LightPink">
+
+    <!--
+        LOCAL RESOURCE DICTIONARY
+        ─────────────────────────
+        Resources declared HERE are scoped only to LoginWindow.
+        Nothing outside this window can see them.
+        We use them for:
+          • ComboBoxItem styles (language pill appearance)
+          • The flag→language item template
+        These never need to change with language, so StaticResource is fine.
+        Language strings (which DO change) use DynamicResource from App.xaml.
+    -->
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- LOCAL: pill style for language ComboBox items -->
+            <Style x:Key="LangItemStyle" TargetType="ComboBoxItem">
+                <Setter Property="Padding"           Value="10,6"/>
+                <Setter Property="FontSize"          Value="13"/>
+                <Setter Property="Foreground"        Value="#1E293B"/>
+                <Setter Property="Background"        Value="Transparent"/>
+                <Setter Property="Cursor"            Value="Hand"/>
+                <Style.Triggers>
+                    <Trigger Property="IsHighlighted" Value="True">
+                        <Setter Property="Background" Value="#FFF0F5"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- LOCAL: ComboBox override so the dropdown matches the card style -->
+            <Style x:Key="LangComboStyle" TargetType="ComboBox">
+                <Setter Property="Background"        Value="White"/>
+                <Setter Property="BorderBrush"       Value="#E2E8F0"/>
+                <Setter Property="BorderThickness"   Value="1"/>
+                <Setter Property="FontSize"          Value="13"/>
+                <Setter Property="Foreground"        Value="#1E293B"/>
+                <Setter Property="Padding"           Value="8,5"/>
+                <Setter Property="Height"            Value="34"/>
+                <Setter Property="Cursor"            Value="Hand"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid VerticalAlignment="Center">
+        <Border Background="White"
+                CornerRadius="16" Padding="40,36"
+                Width="340" HorizontalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAAAAA" BlurRadius="20"
+                                  ShadowDepth="2" Opacity="0.15"/>
+            </Border.Effect>
+
+            <StackPanel>
+
+                <!-- Icon -->
+                <Border Width="72" Height="72" CornerRadius="36"
+                        Background="#EEF2FF" HorizontalAlignment="Center"
+                        Margin="0,0,0,16">
+                    <TextBlock Text="🚗" FontSize="34"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Border>
+
+                <!--
+                    DynamicResource — reads from App.xaml MergedDictionaries.
+                    When LanguageManager swaps the dictionary, these update
+                    instantly on the same frame. No code-behind needed.
+                -->
+                <TextBlock Text="{DynamicResource App_Title}"
+                           FontSize="22" FontWeight="Bold"
+                           Foreground="#1E293B"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,4"/>
+
+                <TextBlock Text="{DynamicResource App_Subtitle}"
+                           FontSize="12" Foreground="#94A3B8"
+                           HorizontalAlignment="Center"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Margin="0,0,0,16"/>
+
+                <!-- ── LANGUAGE SELECTOR ── -->
+                <!--
+                    Label uses DynamicResource so it also translates.
+                    ComboBox SelectionChanged calls LanguageManager to swap dict.
+                    Style uses LOCAL resource (LangComboStyle) — StaticResource is fine
+                    because this style never changes with language.
+                -->
+                <TextBlock Text="{DynamicResource Label_Language}"
+                           FontSize="12" FontWeight="SemiBold"
+                           Foreground="#94A3B8"
+                           Margin="0,0,0,4"/>
+
+                <ComboBox x:Name="LanguagePicker"
+                          Style="{StaticResource LangComboStyle}"
+                          Margin="0,0,0,20"
+                          SelectionChanged="LanguagePicker_SelectionChanged">
+                    <ComboBoxItem x:Name="LangEnglish"
+                                  Style="{StaticResource LangItemStyle}"
+                                  Content="🇬🇧  English"
+                                  IsSelected="True"/>
+                    <ComboBoxItem x:Name="LangTelugu"
+                                  Style="{StaticResource LangItemStyle}"
+                                  Content="🇮🇳  తెలుగు"/>
+                </ComboBox>
+
+                <!-- Username -->
+                <TextBlock Text="{DynamicResource Label_Username}"
+                           FontSize="13" FontWeight="SemiBold"
+                           Foreground="#1E293B" Margin="0,0,0,6"/>
+                <Border BorderBrush="#E2E8F0" BorderThickness="1"
+                        CornerRadius="8" Margin="0,0,0,4">
+                    <TextBox x:Name="UsernameInput" FontSize="14"
+                             Padding="12,10" BorderThickness="0"
+                             Background="Transparent"/>
+                </Border>
+                <TextBlock x:Name="UsernameError" Foreground="#EF4444"
+                           FontSize="11" Margin="0,0,0,10"
+                           Visibility="Collapsed"/>
+
+                <!-- Password -->
+                <TextBlock Text="{DynamicResource Label_Password}"
+                           FontSize="13" FontWeight="SemiBold"
+                           Foreground="#1E293B" Margin="0,0,0,6"/>
+                <Border BorderBrush="#E2E8F0" BorderThickness="1"
+                        CornerRadius="8" Margin="0,0,0,4">
+                    <PasswordBox x:Name="PasswordInput" FontSize="14"
+                                 Padding="12,10" BorderThickness="0"
+                                 Background="Transparent"/>
+                </Border>
+                <TextBlock x:Name="PasswordError" Foreground="#EF4444"
+                           FontSize="11" Margin="0,0,0,10"
+                           Visibility="Collapsed"/>
+
+                <!-- Error box -->
+                <Border x:Name="ErrorBox" Background="#FEF2F2"
+                        BorderBrush="#FECACA" BorderThickness="1"
+                        CornerRadius="8" Padding="12,8"
+                        Margin="0,0,0,14" Visibility="Collapsed">
+                    <TextBlock x:Name="ErrorText" Foreground="#DC2626"
+                               FontSize="12" TextWrapping="Wrap"/>
+                </Border>
+
+                <!-- Login button — Content also translates -->
+                <Button x:Name="LoginBtn"
+                        Content="{DynamicResource Btn_SignIn}"
+                        Height="44" FontSize="14" FontWeight="SemiBold"
+                        Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="LoginBtn_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="bd" Background="DeepPink"
+                                    CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Opacity" Value="0.85"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="bd" Property="Opacity" Value="0.65"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="bd" Property="Background" Value="#CBD5E1"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <TextBlock Text="{DynamicResource Hint_Credentials}"
+                           FontSize="11" Foreground="#CBD5E1"
+                           HorizontalAlignment="Center"
+                           Margin="0,12,0,0"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

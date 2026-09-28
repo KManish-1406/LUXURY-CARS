@@ -1,0 +1,41 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- AERO2 — Windows 8 flat modern style -->
+    <Color x:Key="Theme_PrimaryColor">#0063B1</Color>
+    <Color x:Key="Theme_AccentColor">#0078D4</Color>
+    <Color x:Key="Theme_BackgroundColor">#FFFFFF</Color>
+    <Color x:Key="Theme_SurfaceColor">#F8F8F8</Color>
+    <Color x:Key="Theme_TextColor">#000000</Color>
+    <Color x:Key="Theme_MutedTextColor">#737373</Color>
+    <Color x:Key="Theme_BorderColor">#D6D6D6</Color>
+    <Color x:Key="Theme_TopBarColor">#0063B1</Color>
+    <Color x:Key="Theme_StatusBarColor">#F0F0F0</Color>
+    <Color x:Key="Theme_GridHeaderColor">#F8F8F8</Color>
+    <Color x:Key="Theme_GridRowColor">#FFFFFF</Color>
+    <Color x:Key="Theme_GridAltRowColor">#F5F5F5</Color>
+    <Color x:Key="Theme_StatCardColor">#F8F8F8</Color>
+    <Color x:Key="Theme_ButtonColor">#0063B1</Color>
+    <Color x:Key="Theme_SearchBorderColor">#D6D6D6</Color>
+    <SolidColorBrush x:Key="Theme_PrimaryBrush"      Color="{StaticResource Theme_PrimaryColor}"/>
+    <SolidColorBrush x:Key="Theme_AccentBrush"       Color="{StaticResource Theme_AccentColor}"/>
+    <SolidColorBrush x:Key="Theme_BackgroundBrush"   Color="{StaticResource Theme_BackgroundColor}"/>
+    <SolidColorBrush x:Key="Theme_SurfaceBrush"      Color="{StaticResource Theme_SurfaceColor}"/>
+    <SolidColorBrush x:Key="Theme_TextBrush"         Color="{StaticResource Theme_TextColor}"/>
+    <SolidColorBrush x:Key="Theme_MutedTextBrush"    Color="{StaticResource Theme_MutedTextColor}"/>
+    <SolidColorBrush x:Key="Theme_BorderBrush"       Color="{StaticResource Theme_BorderColor}"/>
+    <SolidColorBrush x:Key="Theme_TopBarBrush"       Color="{StaticResource Theme_TopBarColor}"/>
+    <SolidColorBrush x:Key="Theme_StatusBarBrush"    Color="{StaticResource Theme_StatusBarColor}"/>
+    <SolidColorBrush x:Key="Theme_GridHeaderBrush"   Color="{StaticResource Theme_GridHeaderColor}"/>
+    <SolidColorBrush x:Key="Theme_GridRowBrush"      Color="{StaticResource Theme_GridRowColor}"/>
+    <SolidColorBrush x:Key="Theme_GridAltRowBrush"   Color="{StaticResource Theme_GridAltRowColor}"/>
+    <SolidColorBrush x:Key="Theme_StatCardBrush"     Color="{StaticResource Theme_StatCardColor}"/>
+    <SolidColorBrush x:Key="Theme_ButtonBrush"       Color="{StaticResource Theme_ButtonColor}"/>
+    <SolidColorBrush x:Key="Theme_SearchBorderBrush" Color="{StaticResource Theme_SearchBorderColor}"/>
+    <CornerRadius x:Key="Theme_CardCornerRadius">2</CornerRadius>
+    <CornerRadius x:Key="Theme_ButtonCornerRadius">2</CornerRadius>
+    <Thickness  x:Key="Theme_CardBorderThickness">1</Thickness>
+    <sys:String x:Key="Theme_Name">Aero2</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,104 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  LOGIN WINDOW                                  -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="App_Title">LUXURY CARS</sys:String>
+    <sys:String x:Key="App_Subtitle">Sign in to manage your inventory</sys:String>
+    <sys:String x:Key="Label_Username">Username</sys:String>
+    <sys:String x:Key="Label_Password">Password</sys:String>
+    <sys:String x:Key="Label_Language">Language</sys:String>
+    <sys:String x:Key="Btn_SignIn">Sign In →</sys:String>
+    <sys:String x:Key="Hint_Credentials">Hint: admin / admin123</sys:String>
+    <sys:String x:Key="Error_UsernameEmpty">Username cannot be empty.</sys:String>
+    <sys:String x:Key="Error_PasswordEmpty">Password cannot be empty.</sys:String>
+    <sys:String x:Key="Error_WrongCredentials">Wrong username or password.</sys:String>
+    <sys:String x:Key="Error_NoDatabase">Cannot connect to database.</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  DASHBOARD WINDOW                              -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="Dashboard_Title">Car Inventory System</sys:String>
+    <sys:String x:Key="Dashboard_TotalCars">Total Cars</sys:String>
+    <sys:String x:Key="Dashboard_Available">Available</sys:String>
+    <sys:String x:Key="Dashboard_OutOfStock">Out of Stock</sys:String>
+    <sys:String x:Key="Dashboard_AddCar">Add</sys:String>
+    <sys:String x:Key="Dashboard_Refresh">Refresh</sys:String>
+    <sys:String x:Key="Dashboard_Logout">Logout</sys:String>
+    <sys:String x:Key="Dashboard_SearchHint">Search by name, brand, model...</sys:String>
+    <sys:String x:Key="Dashboard_ColModel">Model No.</sys:String>
+    <sys:String x:Key="Dashboard_ColBrand">Brand</sys:String>
+    <sys:String x:Key="Dashboard_ColName">Name</sys:String>
+    <sys:String x:Key="Dashboard_ColYear">Year</sys:String>
+    <sys:String x:Key="Dashboard_ColColor">Color</sys:String>
+    <sys:String x:Key="Dashboard_ColPrice">Price</sys:String>
+    <sys:String x:Key="Dashboard_ColStock">Stock</sys:String>
+    <sys:String x:Key="Dashboard_ColStatus">Status</sys:String>
+    <sys:String x:Key="Dashboard_ColAdded">Added On</sys:String>
+    <sys:String x:Key="Dashboard_ColSell">Sell</sys:String>
+    <sys:String x:Key="Dashboard_ColDelete">Delete</sys:String>
+    <sys:String x:Key="Dashboard_BtnSell">Sell</sys:String>
+    <sys:String x:Key="Dashboard_BtnDelete">Delete</sys:String>
+    <sys:String x:Key="Dashboard_ConfirmDelete">Delete {0}?\nThis cannot be undone.</sys:String>
+    <sys:String x:Key="Dashboard_CannotSell">is already out of stock!</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  ADD CAR WINDOW                                -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="AddCar_Title">Add New Car</sys:String>
+    <sys:String x:Key="AddCar_ModelNumber">Car Model Number *</sys:String>
+    <sys:String x:Key="AddCar_Brand">Car Brand *</sys:String>
+    <sys:String x:Key="AddCar_Name">Car Name *</sys:String>
+    <sys:String x:Key="AddCar_Year">Car Year *</sys:String>
+    <sys:String x:Key="AddCar_Color">Color</sys:String>
+    <sys:String x:Key="AddCar_Price">Price (₹) *</sys:String>
+    <sys:String x:Key="AddCar_Stock">New Stock *</sys:String>
+    <sys:String x:Key="AddCar_BtnAdd">Add Car</sys:String>
+    <sys:String x:Key="AddCar_BtnCancel">Cancel</sys:String>
+    <sys:String x:Key="AddCar_Error_Required">Please fill all required (*) fields.</sys:String>
+    <sys:String x:Key="AddCar_Error_Year">Please enter a valid year (e.g. 2024).</sys:String>
+    <sys:String x:Key="AddCar_Error_Price">Please enter a valid price.</sys:String>
+    <sys:String x:Key="AddCar_Error_Stock">Please enter a valid stock quantity.</sys:String>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  SALE WINDOW                                   -->
+    <!-- ══════════════════════════════════════════════ -->
+    <sys:String x:Key="Sale_Title">Process Car Sale</sys:String>
+    <sys:String x:Key="Sale_CardCar">🚘  Car Details</sys:String>
+    <sys:String x:Key="Sale_CardCustomer">👤  Customer Details</sys:String>
+    <sys:String x:Key="Sale_CardPayment">💳  Payment Details</sys:String>
+    <sys:String x:Key="Sale_CardDelivery">📅  Delivery Details</sys:String>
+    <sys:String x:Key="Sale_Model">Model</sys:String>
+    <sys:String x:Key="Sale_BrandName">Brand &amp; Name</sys:String>
+    <sys:String x:Key="Sale_Price">Price</sys:String>
+    <sys:String x:Key="Sale_FullName">Full Name *</sys:String>
+    <sys:String x:Key="Sale_Phone">Phone *</sys:String>
+    <sys:String x:Key="Sale_Email">Email</sys:String>
+    <sys:String x:Key="Sale_IdProof">ID Proof (Aadhar/PAN)</sys:String>
+    <sys:String x:Key="Sale_Address">Address</sys:String>
+    <sys:String x:Key="Sale_SalePrice">Sale Price (₹) *</sys:String>
+    <sys:String x:Key="Sale_AmountPaid">Amount Paid (₹) *</sys:String>
+    <sys:String x:Key="Sale_DueAmount">Due Amount:</sys:String>
+    <sys:String x:Key="Sale_PaymentType">Payment Type *</sys:String>
+    <sys:String x:Key="Sale_Cash">Cash</sys:String>
+    <sys:String x:Key="Sale_Online">Online</sys:String>
+    <sys:String x:Key="Sale_EMI">EMI</sys:String>
+    <sys:String x:Key="Sale_EmiMonths">EMI Months *</sys:String>
+    <sys:String x:Key="Sale_DeliveryDate">Delivery Date *</sys:String>
+    <sys:String x:Key="Sale_Notes">Notes</sys:String>
+    <sys:String x:Key="Sale_BtnCancel">Cancel</sys:String>
+    <sys:String x:Key="Sale_BtnConfirm">✓ Confirm Sale &amp; Generate PDF</sys:String>
+    <sys:String x:Key="Sale_Error_NamePhone">Customer Name and Phone are required.</sys:String>
+    <sys:String x:Key="Sale_Error_Price">Enter a valid sale price.</sys:String>
+    <sys:String x:Key="Sale_Error_AmountPaid">Enter a valid amount paid.</sys:String>
+    <sys:String x:Key="Sale_Error_Overpaid">Amount paid cannot exceed sale price.</sys:String>
+    <sys:String x:Key="Sale_Error_DeliveryDate">Please select a delivery date.</sys:String>
+    <sys:String x:Key="Sale_Error_EmiMonths">Enter valid EMI months.</sys:String>
+    <sys:String x:Key="Sale_Success_Title">Sale Complete</sys:String>
+    <sys:String x:Key="Sale_PdfError_Title">PDF Error</sys:String>
+	<sys:String x:Key="AddCar_Image">Car Image (Optional)</sys:String>
+
+</ResourceDictionary>

@@ -1,0 +1,27 @@
+﻿<Application x:Class="luxury_cars.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/LoginWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Global language strings — swapped by LanguageManager -->
+                <ResourceDictionary
+                    Source="pack://application:,,,/luxury cars;component/Resources/Lang.en.xaml"/>
+
+                <!--
+                    Global theme — swapped by ThemeManager.
+                    Default is Aero2 (modern Windows style).
+                    ThemeManager.OnThemeChanged() replaces this entry
+                    when user picks a different theme from the dropdown.
+                -->
+                <ResourceDictionary
+                    Source="pack://application:,,,/luxury cars;component/Resources/Themes/Theme.Aero2.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
